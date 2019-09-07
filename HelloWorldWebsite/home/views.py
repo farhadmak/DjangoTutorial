@@ -34,10 +34,6 @@ class Finder(generic.DetailView):
 
 import mysql.connector
 
-location = pos
-long = pos.x
-lati = pos.y
-
 mydb = mysql.connector.connect(
     host = "",
     user = "",
