@@ -1,52 +1,47 @@
 <head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, intial-scale=1, shrink-to-fit=no">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, intial-scale=1, shrink-to-fit=no">
 
-<!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
 </head>
 
 <body>
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-    {% csrf_token %}
-    <div class="wrapper">
-      <h1 class="helloworld-text">FORCE fruit</h1>
+  {% csrf_token %}
+  <div class="wrapper">
+    <h1 class="helloworld-text">FORCE fruit</h1>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s5">
+      <input id="last_name" type="text" class="validate">
+      <label for="last_name">Longitude</label>
     </div>
-
-    <div class="row">
-      <div class="input-field col s5">
-        <input id="last_name" type="text" class="validate">
-        <label for="last_name">Longitude</label>
-      </div>
-      <div class="input-field col s5">
-          <input id="last_name" type="text" class="validate">
-          <label for="last_name">Latitude</label>
-      </div>
-      <div class="col s2">
-          <button id="button" class="btn button-css waves-effect" onclick="">Submit</button>
-      </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s5">
+      <input id="last_name" type="text" class="validate">
+      <label for="last_name">Latitude</label>
     </div>
-  
-
-<script>
-  function changeColor(){
-    console.log("here")
-    var button = document.getElementById('button');
-    document.body.classList.toggle('colour')
-  }
-</script>
+  </div>
+  <div class="row">
+    <div class="col s2">
+      <button id="button" class="btn button-css waves-effect" onclick="">Submit</button>
+    </div>
+  </div>
 
   <style>
-  .wrapper {
-    display: flex;
-    height: 20%;
-    flex-direction: column;
-    justify-content: center;
-  }
+    .wrapper {
+      display: flex;
+      height: 20%;
+      flex-direction: column;
+      justify-content: center;
+    }
   </style>
 
 </body>
