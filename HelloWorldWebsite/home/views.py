@@ -49,4 +49,6 @@ FROM tree
 ORDER BY sqrt( (lat - orig_lat)**2 + (long - orig_long)**2 ) DESC
 LIMIT 1;
 ")
+
+https://docs.djangoproject.com/en/2.2/topics/db/queries/
 '''
