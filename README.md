@@ -1,4 +1,5 @@
 Team Name: FORCE merge
+
 Team Members: Liam McDonald, Tyler Lazarenko, Nicholas Whitefield, Farhad Makiabady, Logan Yue
 
 Basic Django Homepage Tutorial
