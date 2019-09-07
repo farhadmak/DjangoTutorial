@@ -2,6 +2,9 @@
 # Created by https://www.gitignore.io/api/venv,django
 # Edit at https://www.gitignore.io/?templates=venv,django
 
+# Our tree data file
+Trees.csv
+
 ### Django ###
 *.log
 *.pot
