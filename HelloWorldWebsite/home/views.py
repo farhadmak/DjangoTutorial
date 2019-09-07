@@ -6,7 +6,7 @@ from django.template import loader
 from django.http import HttpResponse
 from django.views import generic
 from .models import Counter
-from django.db import models
+#from django.db import models
 
 # Create your views here.
 class Home(generic.DetailView):
@@ -22,7 +22,7 @@ class Home(generic.DetailView):
         counter_object.count += 1
         counter_object.save()
         return redirect('homepage')
-
+'''
 class Finder(generic.DetailView):
     longitude = models.IntegerField()
     latitude = models.IntegerField()
@@ -31,7 +31,7 @@ class Finder(generic.DetailView):
     def nearest(self, request, *args, **kwargs):
         return -1
 
-'''
+
 import mysql.connector
 
 location = pos
