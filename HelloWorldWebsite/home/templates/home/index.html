@@ -9,43 +9,28 @@
 </head>
 
 <body>
-
-  <style>
-  .colour {
-    color: #FF0000;
-    background-color: #000000;
-  }
-
-  .wrapper .button-css {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #FF0000;
-  }
-
-  .helloworld-text {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .wrapper {
-    display: flex;
-    height: 100%;
-    flex-direction: column;
-    justify-content: center;
-  }
-  </style>
-
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<form method="POST" name="submit-form">
-  {% csrf_token %}
-  <div class="wrapper">
-    <h1 class="helloworld-text">Hello World!</h1>
-    <h1 class="helloworld-text">Count: {{our_counter.count}}</h1>
-    <button id="button" class="btn button-css waves-effect" onclick="changeColor();">Submit</button>
-  </div>
-</form>
+
+    {% csrf_token %}
+    <div class="wrapper">
+      <h1 class="helloworld-text">FORCE fruit</h1>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s5">
+        <input id="last_name" type="text" class="validate">
+        <label for="last_name">Longitude</label>
+      </div>
+      <div class="input-field col s5">
+          <input id="last_name" type="text" class="validate">
+          <label for="last_name">Latitude</label>
+      </div>
+      <div class="col s2">
+          <button id="button" class="btn button-css waves-effect" onclick="">Submit</button>
+      </div>
+    </div>
+  
 
 <script>
   function changeColor(){
@@ -55,5 +40,13 @@
   }
 </script>
 
+  <style>
+  .wrapper {
+    display: flex;
+    height: 20%;
+    flex-direction: column;
+    justify-content: center;
+  }
+  </style>
 
 </body>
