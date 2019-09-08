@@ -1,52 +1,93 @@
 <head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, intial-scale=1, shrink-to-fit=no">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, intial-scale=1, shrink-to-fit=no">
 
-<!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
+  {% load static %}
+  <script type="text/javascript" src="{% static "app.js" %}"></script>
+ 
 </head>
 
 <body>
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDX3VBYd8jBGl7K9J-muZLYvXyS_me232w&callback=myMap"></script>
 
-    {% csrf_token %}
-    <div class="wrapper">
-      <h1 class="helloworld-text">FORCE fruit</h1>
-    </div>
-
+  {% csrf_token %}
+  <div class="wrapper">
+    <h1>FORCE fruit</h1>
+  </div>
+  <div class="form">
     <div class="row">
-      <div class="input-field col s5">
-        <input id="last_name" type="text" class="validate">
-        <label for="last_name">Longitude</label>
-      </div>
-      <div class="input-field col s5">
-          <input id="last_name" type="text" class="validate">
-          <label for="last_name">Latitude</label>
-      </div>
-      <div class="col s2">
-          <button id="button" class="btn button-css waves-effect" onclick="">Submit</button>
+      <div class="input-field">
+        <input id="longitude" type="text" class="validate">
+        <label for="longitude">Longitude</label>
       </div>
     </div>
-  
+    <div class="row">
+      <div class="input-field">
+        <input id="latitude" type="text" class="validate">
+        <label for="latitude">Latitude</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s2">
+        <button id="button" class="btn button-css waves-effect" onclick="retrieveMap()">Submit</button>
+      </div>
+    </div>
+  </div>
+  <div id="map"></div>
+
+
+
 
 <script>
-  function changeColor(){
-    console.log("here")
-    var button = document.getElementById('button');
-    document.body.classList.toggle('colour')
-  }
+
+function myMap() {
+var mapProp= {
+  center:new google.maps.LatLng(53.524533, -113.522542),
+  zoom:12,
+};
+var map = new google.maps.Map(document.getElementById("map"),mapProp);
+
+var marker = new google.maps.Marker({
+    // The below line is equivalent to writing:
+    // position: new google.maps.LatLng(-34.397, 150.644)
+    position: {lat: 53.524533, lng: -113.522542},
+    map: map
+  });
+
+}
+
 </script>
 
   <style>
-  .wrapper {
-    display: flex;
-    height: 20%;
-    flex-direction: column;
-    justify-content: center;
-  }
+    h1 { color: rgb(0, 116, 106); font-family: 'Helvetica Neue', sans-serif; font-size: 100px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center; }
+
+
+    .wrapper {
+      display: flex;
+      height: 20%;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .form {
+      float: left;
+      width: 40%;
+      padding: 1em;
+    }
+
+    #map {
+      width: 50%;
+      height: 400px;
+      float:right;
+      margin-right: 4em;
+      margin-top: 2em;
+    }
   </style>
 
 </body>
