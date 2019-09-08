@@ -11,7 +11,7 @@ def searchByFruit(cursor, fruit):
 #testing
 conn = sqlite3.connect('../../tree_database.db')
 c = conn.cursor()
-test = searchByFruit(c,'apple')
+test = searchByFruit(c,'saskatoon')
 for tree in test:
 	print(tree)
 
