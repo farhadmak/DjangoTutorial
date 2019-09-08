@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+import json
 
 from django.shortcuts import render, redirect
 from django.template import loader
@@ -18,10 +19,7 @@ class Home(generic.DetailView):
         return render(request, self.template_name, context)
 
     def post(self, request, *args, **kwargs):
-        counter_object = Counter.objects.get(pk=1)
-        counter_object.count += 1
-        counter_object.save()
-        return redirect('homepage')
+        return HttpResponse(json.dumps({'lat' : 5, 'lon': 5}))
 '''
 class Finder(generic.DetailView):
     longitude = models.IntegerField()
