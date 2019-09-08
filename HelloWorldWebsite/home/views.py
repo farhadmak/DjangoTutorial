@@ -33,7 +33,9 @@ class Home(generic.DetailView):
         # mydb = sqlite3.connect('../../tree_database.db')
         # mycursor = mydb.cursor()
         treeInfo = nearest(latitude, longitude)
-        context = {"nearest_tree": str(treeInfo)}
+        context = {"nearest_tree": str(treeInfo), "lat":str(treeInfo[15]), "lon":str(treeInfo[16])}
+
+
         # return redirect('homepage')
         return HttpResponse(json.dumps(context))
 # class Home(generic.DetailView):
