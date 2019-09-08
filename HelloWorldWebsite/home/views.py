@@ -33,10 +33,9 @@ class Home(generic.DetailView):
         # mydb = sqlite3.connect('../../tree_database.db')
         # mycursor = mydb.cursor()
         treeInfo = nearest(latitude, longitude)
-        print(treeInfo)
         context = {"nearest_tree": str(treeInfo)}
         # return redirect('homepage')
-        return json.dumps(context)
+        return HttpResponse(json.dumps(context))
 # class Home(generic.DetailView):
 #     model = Counter
 #     template_name = "home/index.html"

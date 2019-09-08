@@ -3,10 +3,9 @@ import math
 
 def nearest(lat, lon):
     #result = cursor.execute(" SELECT * FROM tree ORDER BY sqrt( (latitude - ?)**2 + (longitude - ?)**2 ) DESC LIMIT 1;", (lat, lon))
-    mydb = sqlite3.connect('../../tree_database.db')
+    mydb = sqlite3.connect('../tree_database.db')
     cursor = mydb.cursor()
     #treeInfo = nearest(mycursor,self.latitude,self.longitude)
-
     trees = cursor.execute("SELECT * FROM tree WHERE bears_edible_fruit = 'Yes'") #cursor.fetchone()
     closest = trees.fetchone()
     #print(closest)
