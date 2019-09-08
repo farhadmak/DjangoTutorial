@@ -9,10 +9,10 @@ def searchByFruit(cursor, fruit):
 	return trees
 
 #testing
-conn = sqlite3.connect('../../tree_database.db')
-c = conn.cursor()
-test = searchByFruit(c,'saskatoon')
-for tree in test:
-	print(tree)
+# conn = sqlite3.connect('../../tree_database.db')
+# c = conn.cursor()
+# test = searchByFruit(c,'saskatoon')
+# for tree in test:
+# 	print(tree)
 
-conn.close()	
+# conn.close()	

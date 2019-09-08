@@ -23,5 +23,5 @@ def nearest(lat, lon):
 #tests
 #mydb = sqlite3.connect('../../tree_database.db')
 #mycursor = mydb.cursor()
-print(nearest(53.4, -113.490929))
+#print(nearest(53.4, -113.490929))
 
