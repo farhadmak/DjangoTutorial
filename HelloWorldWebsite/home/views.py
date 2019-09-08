@@ -6,7 +6,8 @@ from django.template import loader
 from django.http import HttpResponse
 from django.views import generic
 from .models import Counter
-#from django.db import models
+from django.db import models
+import sqlite3
 
 # Create your views here.
 class Home(generic.DetailView):
@@ -22,31 +23,21 @@ class Home(generic.DetailView):
         counter_object.count += 1
         counter_object.save()
         return redirect('homepage')
-'''
+
+
 class Finder(generic.DetailView):
     longitude = models.IntegerField()
     latitude = models.IntegerField()
-    neighbourhood = models.CharField(max_length=100)
+    
+    mydb = squlite3.connect('../../tree_database.db')
+
+    mycursor = mydb.cursor()
 
     def nearest(self, request, *args, **kwargs):
+        result = mycursor.execute(" SELECT * FROM tree ORDER BY sqrt( (lat - orig_lat)**2 + (long - orig_long)**2 ) DESC LIMIT 1; ")
+        print(result[0])
         return -1
 
 
-import mysql.connector
 
-mydb = mysql.connector.connect(
-    host = "",
-    user = "",
-    passwd = "",
-    database = ""
-)
 
-mycursor = mydb.cursor()
-
-mycursor.execute("
-SELECT *
-FROM tree
-ORDER BY sqrt( (lat - orig_lat)**2 + (long - orig_long)**2 ) DESC
-LIMIT 1;
-")
-'''
