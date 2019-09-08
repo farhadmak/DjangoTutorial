@@ -5,6 +5,9 @@
 
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  {% load static %}
+  <script type="text/javascript" src="{% static "app.js" %}"></script>
  
 </head>
 
@@ -29,11 +32,10 @@
         <input id="latitude" type="text" class="validate">
         <label for="latitude">Latitude</label>
       </div>
-    </div>
-    <div class="row">
-      <div class="col s2">
-        <button id="button" class="btn button-css waves-effect" onclick="initMap()">Submit</button>
-      </div>
+  </div>
+  <div class="row">
+    <div class="col s2">
+      <button id="button" class="btn button-css waves-effect" onclick="retrieveMap()">Submit</button>
     </div>
   </div>
   <div id="map"></div>
@@ -57,6 +59,7 @@ var marker = new google.maps.Marker({
   });
 
 }
+
 </script>
 
   <style>
