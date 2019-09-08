@@ -25,16 +25,21 @@ class Home(generic.DetailView):
         counter_object.save()
         return redirect('homepage')
 
-
+'''
 class Finder(generic.DetailView):
     longitude = models.IntegerField()
     latitude = models.IntegerField()
-    
+    template_name = "home/index.html"
+
     treeInfo = models.ListCharField(
         base_field = models.CharField(max_length = 30),
         size = 18,
         max_length = (18 * 31)
     )
+
+    def get(self, request, *args, **kwargs):
+        context = {'lat' : }
+        return render(request, self.template_name, context)
     
     def post(self, request, *args, **kwargs):
         mydb = sqlite3.connect('../../tree_database.db')
@@ -44,7 +49,7 @@ class Finder(generic.DetailView):
 
         return redirect('homepage')
 
-    
+'''
 
 
 
