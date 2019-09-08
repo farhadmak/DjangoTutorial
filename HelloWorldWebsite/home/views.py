@@ -30,10 +30,17 @@ class Finder(generic.DetailView):
     longitude = models.IntegerField()
     latitude = models.IntegerField()
     
+    treeInfo = models.ListCharField(
+        base_field = models.CharField(max_length = 30),
+        size = 18,
+        max_length = (18 * 31)
+    )
+    
     def post(self, request, *args, **kwargs):
         mydb = sqlite3.connect('../../tree_database.db')
         mycursor = mydb.cursor()
         treeInfo = nearest(mycursor,self.latitude,self.longitude)
+        treeInfo.save()
 
         return redirect('homepage')
 
