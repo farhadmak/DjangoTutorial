@@ -8,6 +8,7 @@ from django.views import generic
 from .models import Counter
 from django.db import models
 import sqlite3
+from .nearest import nearest
 
 # Create your views here.
 class Home(generic.DetailView):
@@ -29,14 +30,14 @@ class Finder(generic.DetailView):
     longitude = models.IntegerField()
     latitude = models.IntegerField()
     
-    mydb = sqlite3.connect('../../tree_database.db')
+    def post(self, request, *args, **kwargs):
+        mydb = sqlite3.connect('../../tree_database.db')
+        mycursor = mydb.cursor()
+        treeInfo = nearest(mycursor,self.latitude,self.longitude)
 
-    mycursor = mydb.cursor()
+        return redirect('homepage')
 
-    def nearest(self, request, *args, **kwargs):
-        result = mycursor.execute(" SELECT * FROM tree ORDER BY sqrt( (lat - orig_lat)**2 + (long - orig_long)**2 ) DESC LIMIT 1; ")
-        print(result[0])
-        return -1
+    
 
 
 
