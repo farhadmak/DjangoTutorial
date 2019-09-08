@@ -1,7 +1,7 @@
 function retrieveMap(){
   console.log("hello");
-  let lat = document.getElementById('last_name').value;
-  let lon = document.getElementById('last_name').value;
+  let lat = document.getElementById('latitude').value;
+  let lon = document.getElementById('longitude').value;
   let csrf = document.getElementsByName("csrfmiddlewaretoken")[0].value;
   console.log(csrf);
 

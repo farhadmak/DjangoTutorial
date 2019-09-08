@@ -13,38 +13,61 @@ from .nearest import nearest
 
 # Create your views here.
 class Home(generic.DetailView):
-    model = Counter
+    # longitude = models.IntegerField()
+    # latitude = models.IntegerField()
+    # template_name = "home/index.html"
+    #
+    # treeInfo = models.ListCharField(
+    #     base_field = models.CharField(max_length = 30),
+    #     size = 18,
+    #     max_length = (18 * 31)
+    # )
     template_name = "home/index.html"
-
     def get(self, request, *args, **kwargs):
-        context = {'our_counter' : Counter.objects.get(pk=1)}
-        return render(request, self.template_name, context)
-
+        # context = {'lat' : }
+        return render(request, self.template_name)
     def post(self, request, *args, **kwargs):
-        return HttpResponse(json.dumps({'lat' : 5, 'lon': 5}))
+        lat_lon_dict = (json.loads(request.body))
+        latitude = float(lat_lon_dict["lat"])
+        longitude = float(lat_lon_dict["lon"])
+        # mydb = sqlite3.connect('../../tree_database.db')
+        # mycursor = mydb.cursor()
+        treeInfo = nearest(latitude, longitude)
+        print(treeInfo)
+        context = {"nearest_tree": str(treeInfo)}
+        # return redirect('homepage')
+        return json.dumps(context)
+# class Home(generic.DetailView):
+#     model = Counter
+#     template_name = "home/index.html"
+
+#     def get(self, request, *args, **kwargs):
+#         context = {'our_counter' : Counter.objects.get(pk=1)}
+#         return render(request, self.template_name, context)
+
+#     def post(self, request, *args, **kwargs):
+#         return HttpResponse(json.dumps({'lat' : 5, 'lon': 5}))
         
-class Finder(generic.DetailView):
-    longitude = models.IntegerField()
-    latitude = models.IntegerField()
-    template_name = "home/index.html"
+# class Finder(generic.DetailView):
+#     longitude = models.IntegerField()
+#     latitude = models.IntegerField()
+#     template_name = "home/index.html"
 
-    treeInfo = models.ListCharField(
-        base_field = models.CharField(max_length = 30),
-        size = 18,
-        max_length = (18 * 31)
-    )
+#     treeInfo = models.ListCharField(
+#         base_field = models.CharField(max_length = 30),
+#         size = 18,
+#         max_length = (18 * 31)
+#     )
 
-    def get(self, request, *args, **kwargs):
-        context = {'lat' : }
-        return render(request, self.template_name, context)
+#     def get(self, request, *args, **kwargs):
+#         # context = {'lat' : }
+#         return render(request, self.template_name, context)
     
-    def post(self, request, *args, **kwargs):
-        mydb = sqlite3.connect('../../tree_database.db')
-        mycursor = mydb.cursor()
-        treeInfo = nearest(mycursor,self.latitude,self.longitude)
-        treeInfo.save()
+#     def post(self, request, *args, **kwargs):
+#         mydb = sqlite3.connect('../../tree_database.db')
+#         mycursor = mydb.cursor()
+#         treeInfo = nearest(mycursor,self.latitude,self.longitude)
+#         treeInfo.save()
 
-        return redirect('homepage')
-
-'''
+#         return redirect('homepage')
 
