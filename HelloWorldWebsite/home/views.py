@@ -29,7 +29,7 @@ class Finder(generic.DetailView):
     longitude = models.IntegerField()
     latitude = models.IntegerField()
     
-    mydb = squlite3.connect('../../tree_database.db')
+    mydb = sqlite3.connect('../../tree_database.db')
 
     mycursor = mydb.cursor()
 
