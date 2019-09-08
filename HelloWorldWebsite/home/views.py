@@ -51,6 +51,3 @@ class Finder(generic.DetailView):
 
 '''
 
-
-
-
